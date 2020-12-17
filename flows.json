@@ -1,15 +1,15 @@
 [
     {
-        "id": "f6f2187d.f17ca8",
+        "id": "f042db8a.041a08",
         "type": "tab",
         "label": "Flow 1",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "3cc11d24.ff01a2",
+        "id": "5bdaea9.1ca4214",
         "type": "comment",
-        "z": "f6f2187d.f17ca8",
+        "z": "f042db8a.041a08",
         "name": "WARNING: please check you have started this container with a volume that is mounted to /data\\n otherwise any flow changes are lost when you redeploy or upgrade the container\\n (e.g. upgrade to a more recent node-red docker image).\\n  If you are using named volumes you can ignore this warning.\\n Double click or see info side panel to learn how to start Node-RED in Docker to save your work",
         "info": "\nTo start docker with a bind mount volume (-v option), for example:\n\n```\ndocker run -it -p 1880:1880 -v /home/user/node_red_data:/data --name mynodered nodered/node-red\n```\n\nwhere `/home/user/node_red_data` is a directory on your host machine where you want to store your flows.\n\nIf you do not do this then you can experiment and redploy flows, but if you restart or upgrade the container the flows will be disconnected and lost. \n\nThey will still exist in a hidden data volume, which can be recovered using standard docker techniques, but that is much more complex than just starting with a named volume as described above.",
         "x": 350,
@@ -17,9 +17,9 @@
         "wires": []
     },
     {
-        "id": "81ee9e73.ede6",
+        "id": "5a78935f.b4c06c",
         "type": "http in",
-        "z": "f6f2187d.f17ca8",
+        "z": "f042db8a.041a08",
         "name": "",
         "url": "http",
         "method": "get",
@@ -29,14 +29,14 @@
         "y": 280,
         "wires": [
             [
-                "46920778.b01ed8"
+                "3a60accc.111ce4"
             ]
         ]
     },
     {
-        "id": "46920778.b01ed8",
+        "id": "3a60accc.111ce4",
         "type": "function",
-        "z": "f6f2187d.f17ca8",
+        "z": "f042db8a.041a08",
         "name": "",
         "func": "msg.payload = new Date().toString();\nreturn msg;",
         "outputs": 1,
@@ -47,14 +47,14 @@
         "y": 360,
         "wires": [
             [
-                "623f9ea7.5d514"
+                "c1ff26c6.528e18"
             ]
         ]
     },
     {
-        "id": "90f6df57.3cda1",
+        "id": "98959df1.828f2",
         "type": "http response",
-        "z": "f6f2187d.f17ca8",
+        "z": "f042db8a.041a08",
         "name": "",
         "statusCode": "",
         "headers": {},
@@ -63,9 +63,9 @@
         "wires": []
     },
     {
-        "id": "623f9ea7.5d514",
+        "id": "c1ff26c6.528e18",
         "type": "template",
-        "z": "f6f2187d.f17ca8",
+        "z": "f042db8a.041a08",
         "name": "",
         "field": "payload",
         "fieldType": "msg",
@@ -77,7 +77,22 @@
         "y": 400,
         "wires": [
             [
-                "90f6df57.3cda1"
+                "98959df1.828f2"
+            ]
+        ]
+    },
+    {
+        "id": "c8e98b23.3d4f98",
+        "type": "complete",
+        "z": "f042db8a.041a08",
+        "name": "",
+        "scope": [],
+        "uncaught": false,
+        "x": 680,
+        "y": 340,
+        "wires": [
+            [
+                "98959df1.828f2"
             ]
         ]
     }
